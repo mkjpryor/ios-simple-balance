@@ -203,7 +203,6 @@ const TransactionForm = ({ navigation, transaction, onComplete }) => {
                 iconName="ios-checkmark"
                 disabled={!payeeSanitised || amount <= 0}
                 onPress={onButtonPress}
-                iconStyle={{ fontSize: 50, lineHeight: 50, height: 50 }}
             />
         )
     }));

@@ -46,7 +46,6 @@ const AccountForm = ({ navigation, accounts, account, onComplete }) => {
                 iconName="ios-checkmark"
                 disabled={!accountNameSanitised}
                 onPress={onButtonPress}
-                iconStyle={{ fontSize: 50, lineHeight: 50, height: 50 }}
             />
         )
     }));
