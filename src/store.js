@@ -4,7 +4,7 @@
 
 import { createStore } from 'redux';
 import { createTransform, persistStore, persistReducer } from 'redux-persist';
-import { AsyncStorage } from 'react-native';
+import AsyncStorage from '@react-native-community/async-storage';
 
 import findIndex from 'lodash/findIndex';
 

@@ -3,7 +3,16 @@
  */
 
 import React from 'react';
-import { Modal as NativeModal, Switch as NativeSwitch, Text as NativeText, TextInput as NativeTextInput, View, TouchableOpacity, StyleSheet, FlatList, SectionList } from 'react-native';
+import {
+    Switch as NativeSwitch,
+    Text as NativeText,
+    TextInput as NativeTextInput,
+    View,
+    TouchableOpacity,
+    StyleSheet,
+    FlatList,
+    SectionList
+} from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
 import styles from './styles';

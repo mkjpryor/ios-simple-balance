@@ -2,10 +2,10 @@
  * Account list page for the simple-balance app.
  */
 
-import React from 'react';
+import React, { useLayoutEffect } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { ActionSheetIOS, Alert, FlatList, TouchableOpacity, Button, View } from 'react-native';
+import { ActionSheetIOS, Alert, View } from 'react-native';
 
 import { actionCreators } from '../store';
 import styles from './styles';
@@ -63,7 +63,7 @@ const AccountListItem = ({ account, toggleDefaultAccount, toTransactions, toEdit
 
 const AccountList = ({ navigation, accounts, editAccount, deleteAccount }) => {
     // Add a button to the header to add an account
-    React.useLayoutEffect(() => navigation.setOptions({
+    useLayoutEffect(() => navigation.setOptions({
         headerRight: () => (
             <HeaderIconButton
                 iconName="ios-add"

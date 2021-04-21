@@ -2,10 +2,10 @@
  * Page for adding a transaction in the simple-balance app.
  */
 
-import React, { component, useState } from 'react';
+import React, { useLayoutEffect, useState } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { Alert, Button, Keyboard, StyleSheet, TouchableWithoutFeedback, View } from 'react-native';
+import { Keyboard, StyleSheet, TouchableWithoutFeedback, View } from 'react-native';
 
 import get from 'lodash/get';
 
@@ -90,7 +90,7 @@ const CurrencyInput = ({
     onBlur,
     ...props
 }) => {
-    const initialValue = value !== null ? value : defaultValue;
+    const initialValue = value || defaultValue;
     const [displayValue, setDisplayValue] = useState(formatCurrency(initialValue));
     const onChangeText = (text) => {
         // First, strip all the non-numeric characters
@@ -196,7 +196,7 @@ const TransactionForm = ({ navigation, transaction, onComplete }) => {
         navigation.goBack();
     };
     // Add a button to the header to say when they are done
-    React.useLayoutEffect(() => navigation.setOptions({
+    useLayoutEffect(() => navigation.setOptions({
         title: 'Add Transaction',
         headerRight: () => (
             <HeaderIconButton

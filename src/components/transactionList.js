@@ -2,11 +2,10 @@
  * Transaction list page for the simple-balance app.
  */
 
-import React from 'react';
+import React, { useLayoutEffect } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { ActionSheetIOS, Alert, SectionList, StyleSheet, Button, View } from 'react-native';
-import { HeaderBackButton } from '@react-navigation/stack';
+import { ActionSheetIOS, Alert, StyleSheet, View } from 'react-native';
 
 import { actionCreators } from '../store';
 import styles from './styles';
@@ -28,7 +27,13 @@ const AccountBalance = ({ account }) => (
 );
 
 
-const TransactionListItem = ({ transaction, showRunningBalance, toEditTransaction, addTransaction, deleteTransaction }) => {
+const TransactionListItem = ({
+    transaction,
+    showRunningBalance,
+    toEditTransaction,
+    addTransaction,
+    deleteTransaction
+}) => {
     const confirmDelete = () => Alert.alert(
         "Confirm delete",
         "If you delete this transaction it cannot be restored.",
@@ -91,7 +96,7 @@ const TransactionListItem = ({ transaction, showRunningBalance, toEditTransactio
 
 const TransactionList = ({ navigation, account, addTransaction, deleteTransaction }) => {
     // Add a button to the header to add an account
-    React.useLayoutEffect(() => navigation.setOptions({
+    useLayoutEffect(() => navigation.setOptions({
         title: account.name,
         headerRight: () => (
             <HeaderIconButton

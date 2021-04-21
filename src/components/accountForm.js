@@ -2,10 +2,10 @@
  * Page for adding an account in the simple-balance app.
  */
 
-import React, { component, useState } from 'react';
+import React, { useLayoutEffect, useState } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { Alert, Button, View } from 'react-native';
+import { Alert, View } from 'react-native';
 
 import get from 'lodash/get';
 
@@ -40,7 +40,7 @@ const AccountForm = ({ navigation, accounts, account, onComplete }) => {
         }
     };
     // Add a button to the header to say when they are done
-    React.useLayoutEffect(() => navigation.setOptions({
+    useLayoutEffect(() => navigation.setOptions({
         headerRight: () => (
             <HeaderIconButton
                 iconName="ios-checkmark"
@@ -77,18 +77,16 @@ export const AccountAdd = connect(
     (state) => ({ accounts: state.accounts }),
     dispatch => bindActionCreators(actionCreators, dispatch)
 )(
-    ({ navigation, accounts, addAccount }) => {
-        // When the header button is pressed, try to create the account
-        return (
-            <View style={styles.container}>
-                <AccountForm
-                    navigation={navigation}
-                    accounts={accounts}
-                    onComplete={addAccount}
-                />
-            </View>
-        );
-    }
+    // When the header button is pressed, try to create the account
+    ({ navigation, accounts, addAccount }) => (
+        <View style={styles.container}>
+            <AccountForm
+                navigation={navigation}
+                accounts={accounts}
+                onComplete={addAccount}
+            />
+        </View>
+    )
 );
 
 
@@ -99,17 +97,15 @@ export const AccountEdit = connect(
     }),
     dispatch => bindActionCreators(actionCreators, dispatch)
 )(
-    ({ navigation, accounts, account, editAccount }) => {
-        // When the header button is pressed, try to create the account
-        return (
-            <View style={styles.container}>
-                <AccountForm
-                    navigation={navigation}
-                    accounts={accounts}
-                    account={account}
-                    onComplete={acct => editAccount(account.id, acct)}
-                />
-            </View>
-        );
-    }
+    // When the header button is pressed, try to edit the account
+    ({ navigation, accounts, account, editAccount }) => (
+        <View style={styles.container}>
+            <AccountForm
+                navigation={navigation}
+                accounts={accounts}
+                account={account}
+                onComplete={acct => editAccount(account.id, acct)}
+            />
+        </View>
+    )
 );
