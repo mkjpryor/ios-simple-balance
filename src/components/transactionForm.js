@@ -217,19 +217,19 @@ const TransactionForm = ({ navigation, transaction, onComplete }) => {
                 />
             </FormGroup>
             <Separator />
+            <FormGroup label="Amount">
+                <CurrencyInput
+                    onChangeValue={setAmount}
+                    defaultValue={amount}
+                    autoFocus
+                />
+            </FormGroup>
+            <Separator />
             <FormGroup label="Payee">
                 <FocussableTextInput
                     placeholder="Payee"
                     onChangeText={setPayee}
                     defaultValue={payee}
-                    autoFocus
-                />
-            </FormGroup>
-            <Separator />
-            <FormGroup label="Amount">
-                <CurrencyInput
-                    onChangeValue={setAmount}
-                    defaultValue={amount}
                 />
             </FormGroup>
             <Separator />
