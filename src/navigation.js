@@ -10,7 +10,7 @@ import { connect } from 'react-redux';
 import AccountList from './components/accountList';
 import { AccountAdd, AccountEdit } from './components/accountForm';
 import TransactionList from './components/transactionList';
-import { TransactionAdd, TransactionEdit } from './components/transactionForm';
+import { TransactionAdd, TransactionCopy, TransactionEdit } from './components/transactionForm';
 
 
 const Stack = createStackNavigator();
@@ -92,6 +92,10 @@ export default Navigation = () => (
             <Stack.Screen
                 name="transactionAdd"
                 component={TransactionAdd}
+            />
+            <Stack.Screen
+                name="transactionCopy"
+                component={TransactionCopy}
             />
             <Stack.Screen
                 name="transactionEdit"

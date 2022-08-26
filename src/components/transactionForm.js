@@ -261,6 +261,29 @@ export const TransactionAdd = connect(
 );
 
 
+export const TransactionCopy = connect(
+    (state, { route }) => {
+        const account = state.accounts.find(a => a.id === route.params.accountId);
+        const transaction = account.transactions.find(t => t.id === route.params.transactionId);
+        return {
+            account,
+            transaction: { ...transaction, id: undefined, cleared: new Date() }
+        };
+    },
+    dispatch => bindActionCreators(actionCreators, dispatch)
+)(
+    ({ navigation, account, transaction, addTransaction }) => (
+        <View style={styles.container}>
+            <TransactionForm
+                navigation={navigation}
+                transaction={transaction}
+                onComplete={t => addTransaction(account.id, t)}
+            />
+        </View>
+    )
+);
+
+
 export const TransactionEdit = connect(
     (state, { route }) => {
         const account = state.accounts.find(a => a.id === route.params.accountId);

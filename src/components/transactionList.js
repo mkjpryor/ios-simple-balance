@@ -31,7 +31,7 @@ const TransactionListItem = ({
     transaction,
     showRunningBalance,
     toEditTransaction,
-    addTransaction,
+    toCopyTransaction,
     deleteTransaction
 }) => {
     const confirmDelete = () => Alert.alert(
@@ -60,8 +60,8 @@ const TransactionListItem = ({
             destructiveButtonIndex: 2
         },
         buttonIndex => {
-            // To copy a transaction, just overwrite the cleared date
-            if( buttonIndex == 1 ) addTransaction({ ...transaction, cleared: new Date() });
+            // When copying a transaction, the user gets an opportunity to edit the new transaction
+            if( buttonIndex == 1 ) toCopyTransaction(transaction.id);
             else if( buttonIndex == 2 ) confirmDelete();
         }
     );
@@ -94,7 +94,7 @@ const TransactionListItem = ({
 };
 
 
-const TransactionList = ({ navigation, account, addTransaction, deleteTransaction }) => {
+const TransactionList = ({ navigation, account, deleteTransaction }) => {
     // Add a button to the header to add an account
     useLayoutEffect(() => navigation.setOptions({
         title: account.name,
@@ -141,7 +141,7 @@ const TransactionList = ({ navigation, account, addTransaction, deleteTransactio
                         transaction={item}
                         showRunningBalance={account.showRunningBalance}
                         toEditTransaction={transactionId => navigation.navigate('transactionEdit', { accountId: account.id, transactionId })}
-                        addTransaction={transaction => addTransaction(account.id, transaction)}
+                        toCopyTransaction={transactionId => navigation.navigate('transactionCopy', { accountId: account.id, transactionId })}
                         deleteTransaction={transactionId => deleteTransaction(account.id, transactionId)}
                     />
                 )}
