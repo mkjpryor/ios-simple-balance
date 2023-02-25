@@ -8,10 +8,10 @@ import {
     Text as NativeText,
     TextInput as NativeTextInput,
     View,
-    TouchableOpacity,
     StyleSheet,
     FlatList,
-    SectionList
+    SectionList,
+    Pressable
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
@@ -53,7 +53,7 @@ export const Switch = ({ label, ...props }) => (
 
 export const ListItem = (props) => {
     const { containerComponent, onPress, onLongPress, caret, ...containerProps } = props;
-    const Container = containerComponent || ((onPress || onLongPress) ? TouchableOpacity : View);
+    const Container = containerComponent || ((onPress || onLongPress) ? Pressable : View);
     return (
         <Container
             {...containerProps}
@@ -99,7 +99,7 @@ export const FormGroup = (props) => {
 
 
 export const IconButton = ({ iconName, iconStyle, disabled = false, ...props }) => (
-    <TouchableOpacity disabled={disabled} {...props}>
+    <Pressable disabled={disabled} {...props}>
         <Ionicons
             name={iconName}
             style={StyleSheet.flatten([
@@ -108,7 +108,7 @@ export const IconButton = ({ iconName, iconStyle, disabled = false, ...props }) 
                 disabled && styles.iconButtonDisabled
             ])}
         />
-    </TouchableOpacity>
+    </Pressable>
 );
 
 
