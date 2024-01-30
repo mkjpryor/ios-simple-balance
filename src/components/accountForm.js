@@ -43,7 +43,7 @@ const AccountForm = ({ navigation, accounts, account, onComplete }) => {
     useLayoutEffect(() => navigation.setOptions({
         headerRight: () => (
             <HeaderIconButton
-                iconName="ios-checkmark"
+                iconName="checkmark"
                 disabled={!accountNameSanitised}
                 onPress={onButtonPress}
             />

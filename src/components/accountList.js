@@ -46,7 +46,7 @@ const AccountListItem = ({ account, toggleDefaultAccount, toTransactions, toEdit
     return (
         <ListItem onPress={onPress} onLongPress={onLongPress} caret>
             <IconButton
-                iconName={account.isDefault ? "ios-star" : "ios-star-outline"}
+                iconName={account.isDefault ? "star" : "star-outline"}
                 style={{ paddingRight: 15 }}
                 iconStyle={{ color: "cornflowerblue" }}
                 onPress={toggleDefaultAccount}
@@ -66,7 +66,7 @@ const AccountList = ({ navigation, accounts, editAccount, deleteAccount }) => {
     useLayoutEffect(() => navigation.setOptions({
         headerRight: () => (
             <HeaderIconButton
-                iconName="ios-add"
+                iconName="add"
                 onPress={() => navigation.navigate('accountAdd')}
             />
         )

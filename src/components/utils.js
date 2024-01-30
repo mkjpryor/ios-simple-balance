@@ -62,7 +62,7 @@ export const ListItem = (props) => {
             style={StyleSheet.flatten([styles.listItem, props.style])}
         >
             {props.children}
-            {caret && <Ionicons name="ios-arrow-forward" style={styles.listItemCaret} />}
+            {caret && <Ionicons name="arrow-forward" style={styles.listItemCaret} />}
         </Container>
     );
 };

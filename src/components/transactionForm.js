@@ -200,7 +200,7 @@ const TransactionForm = ({ navigation, transaction, onComplete }) => {
         title: 'Add Transaction',
         headerRight: () => (
             <HeaderIconButton
-                iconName="ios-checkmark"
+                iconName="checkmark"
                 disabled={!payeeSanitised || amount <= 0}
                 onPress={onButtonPress}
             />

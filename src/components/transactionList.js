@@ -100,7 +100,7 @@ const TransactionList = ({ navigation, account, deleteTransaction }) => {
         title: account.name,
         headerRight: () => (
             <HeaderIconButton
-                iconName="ios-add"
+                iconName="add"
                 onPress={() => navigation.navigate('transactionAdd', { accountId: account.id })}
             />
         )
